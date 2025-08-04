@@ -1,5 +1,6 @@
-package com.touhouqing.demo.config;
+package com.touhouqing.lc4jDemo.config;
 
+import com.touhouqing.lc4jDemo.repository.RedisChatMemoryStore;
 import dev.langchain4j.memory.ChatMemory;
 import dev.langchain4j.memory.chat.ChatMemoryProvider;
 import dev.langchain4j.memory.chat.MessageWindowChatMemory;
@@ -13,6 +14,9 @@ public class CommonConfig {
 
     @Autowired
     private OpenAiChatModel model;
+
+    @Autowired
+    private RedisChatMemoryStore redisChatMemoryStore;
 
     //构建会话记忆对象
     @Bean
@@ -32,6 +36,7 @@ public class CommonConfig {
                 return MessageWindowChatMemory.builder()
                         .id(memoryId)
                         .maxMessages(20)
+                        .chatMemoryStore(redisChatMemoryStore)
                         .build();
             }
         };

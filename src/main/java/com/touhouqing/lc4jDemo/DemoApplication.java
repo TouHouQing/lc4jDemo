@@ -1,4 +1,4 @@
-package com.touhouqing.demo;
+package com.touhouqing.lc4jDemo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

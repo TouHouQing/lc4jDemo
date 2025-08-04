@@ -1,4 +1,4 @@
-package com.touhouqing.demo.aiservice;
+package com.touhouqing.lc4jDemo.aiservice;
 
 import dev.langchain4j.service.MemoryId;
 import dev.langchain4j.service.SystemMessage;

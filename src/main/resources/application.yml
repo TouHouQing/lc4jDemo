@@ -16,3 +16,11 @@ langchain4j:
 logging:
   level:
     dev.langchain4j: debug
+
+spring:
+  data:
+    redis:
+      host: 43.143.215.162
+      port: 6379
+      password: ${REDIS.PASSWORD}
+      database: 1

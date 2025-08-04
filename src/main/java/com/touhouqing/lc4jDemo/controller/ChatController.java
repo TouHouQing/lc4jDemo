@@ -1,6 +1,6 @@
-package com.touhouqing.demo.controller;
+package com.touhouqing.lc4jDemo.controller;
 
-import com.touhouqing.demo.aiservice.ConsultantService;
+import com.touhouqing.lc4jDemo.aiservice.ConsultantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
