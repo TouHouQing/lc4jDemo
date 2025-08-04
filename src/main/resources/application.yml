@@ -38,3 +38,12 @@ spring:
       port: 6379
       password: ${REDIS.PASSWORD}
       database: 1
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/volunteer?useSSL=false&serverTimezone=UTC
+    username: root
+    password: ${MYSQL.PASSWORD}
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
