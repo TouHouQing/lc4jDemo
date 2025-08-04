@@ -14,6 +14,7 @@ import reactor.core.publisher.Flux;
         //chatMemory = "chatMemory"//会话记忆对象
         chatMemoryProvider = "chatMemoryProvider",//会话记忆提供者
         contentRetriever = "contentRetriever"//内容检索器
+
 )
 public interface ConsultantService {
     //聊天
