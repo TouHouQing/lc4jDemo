@@ -1,5 +1,6 @@
 package com.touhouqing.demo.aiservice;
 
+import dev.langchain4j.service.MemoryId;
 import dev.langchain4j.service.SystemMessage;
 import dev.langchain4j.service.UserMessage;
 import dev.langchain4j.service.spring.AiService;
@@ -10,12 +11,13 @@ import reactor.core.publisher.Flux;
         wiringMode = AiServiceWiringMode.EXPLICIT,//手动装配
         chatModel = "openAiChatModel",//指定模型
         streamingChatModel = "openAiStreamingChatModel",//流式模型
-        chatMemory = "chatMemory"//会话记忆
+        //chatMemory = "chatMemory"//会话记忆对象
+        chatMemoryProvider = "chatMemoryProvider"//会话记忆提供者
 )
 public interface ConsultantService {
     //聊天
     //public String chat(String message);
     //@UserMessage("你是神，{{it}}")
     @SystemMessage(fromResource = "/system.txt")
-    public Flux<String> chat(String message);
+    public Flux<String> chat(@MemoryId String memoryId, @UserMessage String message);
 }
