@@ -10,6 +10,7 @@ import dev.langchain4j.data.document.splitter.DocumentSplitters;
 import dev.langchain4j.memory.ChatMemory;
 import dev.langchain4j.memory.chat.ChatMemoryProvider;
 import dev.langchain4j.memory.chat.MessageWindowChatMemory;
+import dev.langchain4j.model.embedding.EmbeddingModel;
 import dev.langchain4j.model.openai.OpenAiChatModel;
 import dev.langchain4j.rag.content.retriever.ContentRetriever;
 import dev.langchain4j.rag.content.retriever.EmbeddingStoreContentRetriever;
@@ -30,6 +31,9 @@ public class CommonConfig {
 
     @Autowired
     private RedisChatMemoryStore redisChatMemoryStore;
+
+    @Autowired
+    private EmbeddingModel embeddingModel;
 
     //构建会话记忆对象
     @Bean
@@ -73,6 +77,7 @@ public class CommonConfig {
         EmbeddingStoreIngestor ingestor = EmbeddingStoreIngestor.builder()
                 .embeddingStore(store)
                 .documentSplitter(ds)
+                .embeddingModel(embeddingModel)
                 .build();
         ingestor.ingest(documents);
         return store;
@@ -85,6 +90,7 @@ public class CommonConfig {
                 .embeddingStore(store)
                 .minScore(0.3)
                 .maxResults(3)
+                .embeddingModel(embeddingModel)
                 .build();
     }
 
