@@ -72,7 +72,7 @@ public class CommonConfig {
         List<Document> documents = ClassPathDocumentLoader.loadDocuments("content",new ApachePdfBoxDocumentParser());
         //List<Document> documents = FileSystemDocumentLoader.loadDocuments("src/main/resources/content");
         //2. 构建向量数据库操作对象
-        InMemoryEmbeddingStore store = new InMemoryEmbeddingStore();//内存向量数据库
+//        InMemoryEmbeddingStore store = new InMemoryEmbeddingStore();//内存向量数据库
 
 
         //构建文本分割器对象
@@ -86,12 +86,12 @@ public class CommonConfig {
                 .embeddingModel(embeddingModel)
                 .build();
         ingestor.ingest(documents);
-        return store;
+        return milvusEmbeddingStore;
     }
 
     //构建向量数据库检索对象
     @Bean
-    public ContentRetriever contentRetriever(EmbeddingStore store){
+    public ContentRetriever contentRetriever(/*EmbeddingStore store*/){
         return EmbeddingStoreContentRetriever.builder()
 //                .embeddingStore(store)
                 .embeddingStore(milvusEmbeddingStore)
